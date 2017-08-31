@@ -17,25 +17,32 @@
         </div>
         <script type='text/javascript' src="links.js"></script>
         <script type="text/javascript">
-            if(window.location.hash)
+            function parseHash()
             {
-                var key = window.location.hash.substr(2);
-
-                var link = links[key];
-
-                if(link)
+                if(window.location.hash)
                 {
-                    window.location.replace(link);
+                    var key = window.location.hash.substr(2);
+
+                    var link = links[key];
+
+                    if(link)
+                    {
+                        window.location.replace(link);
+                    }
+                    else
+                    {
+                        document.getElementById('not-found').style.display = 'block';
+                    }
                 }
                 else
                 {
-                    document.getElementById('not-found').style.display = 'block';
+                    window.location.replace("https://github.com/nlowe/s.nlowe.me")
                 }
             }
-            else
-            {
-                window.location.replace("https://github.com/nlowe/s.nlowe.me")
-            }
+
+            window.onhashchange = parseHash;
+
+            parseHash();
         </script>
     </body>
 </html>
