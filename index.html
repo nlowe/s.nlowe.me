@@ -6,10 +6,36 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Cache-control" content="NO-CACHE">
     </head>
     <body>
+        <div id="not-found" style="display: none; text-align: center;">
+            <h3>That's an error!</h3>
+            <p>
+                The specified link does not exist or none was providded.
+            </p>
+        </div>
+        <script link="links.js"></script>
         <script type="text/javascript">
-            
+            if(window.location.hash)
+            {
+                var key = window.location.hash.substr(2);
+
+                var link = links[key];
+
+                if(link)
+                {
+                    window.location.replace(link);
+                }
+                else
+                {
+                    document.getElementById('not-found').style.display = 'block';
+                }
+            }
+            else
+            {
+                window.location.replace("https://github.com/nlowe/s.nlowe.me")
+            }
         </script>
     </body>
 </html>
